@@ -1,0 +1,33 @@
+{
+  "name": "synopc_mongo",
+  "version": "1.0.0",
+  "description": "Book app where can write synopsis on books",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B-Musick/synopc_mongo.git"
+  },
+  "author": "Brendan Musick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B-Musick/synopc_mongo/issues"
+  },
+  "homepage": "https://github.com/B-Musick/synopc_mongo#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "ejs-lint": "^1.0.1",
+    "express": "^4.17.1",
+    "mocha": "^7.0.0",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}
