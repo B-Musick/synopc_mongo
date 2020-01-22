@@ -1,13 +1,19 @@
-let express = require('express'),
+let express    = require('express'),
     bodyParser = require('body-parser'),
-    app     = express(),
-    morgan  = require('morgan'),
-    dotenv  = require('dotenv'),
-    ejsLint = require('ejs-lint');
+    app        = express(),
+    morgan     = require('morgan'),
+    dotenv     = require('dotenv'),
+    mongoose   = require('mongoose'); // Used for connecting to database, schema
     
 // ROUTE IMPORTS
 var indexRoutes = require('./routes/index');
 var bookRoutes = require('./routes/books');
+
+// SCHEMA IMPORTS
+let Book = require('./models/book');
+
+// IMPORT SEED
+var bookSeedDB = require('./bookSeed.js');
 
 // Middleware to help process requests, it can go in POST request and retrieve data
 // USE BODY PARSER TO GET FORM BODY
@@ -31,6 +37,12 @@ app.set('view engine', 'ejs');
 // ROUTE INTEGRATION
 app.use('/', indexRoutes);
 app.use('/books', bookRoutes);
+
+// // CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
+mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
+
+// CALL SEED
+bookSeedDB();
 
 // START THE SERVER
 const PORT = process.env.PORT || 3000;

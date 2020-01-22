@@ -4,30 +4,30 @@ body{
     background-color: rgb(227, 238, 241);
     height: 100vh;
     width: 100vw;
-
 }
+
 #title-header{
     display: flex;
     justify-content: center;
     width: 100%;
-   
-
 }
+
 #title-header-background{
+    /* Style of the header background */
     z-index: 1000;
     height: 100px;
     width: 100%;
     opacity: 0.5;
-    /* font-size: 20px; */
-    /* background-image: url('https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80'); */
-    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),url('https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
+    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+                      url('https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
     /* filter */
-    background-size:cover;
-    background-repeat:   no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center center;
 }
 
 #header-word-title{
+    /* SYNOPC PERMANENT MARKER TEXT*/
     font-family: 'Permanent Marker', cursive;  
     font-weight: 600;
     opacity: 1 !important;
@@ -44,6 +44,7 @@ body{
 }
 
 #navigation-bar{
+    /* Container for the woord links */
     width: 100%;
     height: 40px;
     display: flex;
@@ -52,6 +53,7 @@ body{
     color: white;
     align-content: center;
 }
+
 #nav-bar-items{
     /* This will be foldable when screen is less than 635px */
     width: 100%;
@@ -62,37 +64,38 @@ body{
     color: white;
     align-content: center;
 }
+
 #navigation-bar a{
+    /* Navbar anchors */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-a:hover{
-
-}
 #navigation-bar a{
     text-decoration: none;
     color: white;
-    
 }
+
 .nav-link{
     margin: 0;
     padding: 0;
-    
 }
+
 a:hover{
     background-color:  rgb(63, 119, 188);
-    
     color: white;
-
 }
 
 #fold-down-menu-icon-nav{
+    /* Fold sandwich menu */
     display:none;
 }
-/**************************** IPAD/ MOBILE *************************************/
+
+/**************************** IPAD/ MOBILE ************************************
+ * Logic from scripts/header.js
+*/
 @media(max-width: 635px){
     #header-word-title{
         /* Need font to shrink as view width shrinks */
@@ -105,6 +108,7 @@ a:hover{
     }
     /************ FOLDING MENU *************/
     #fold-down-menu-icon-nav{
+        /* Physical sandwich button */
         display: block;
         padding: 11px;
         width: 15px;
@@ -114,13 +118,12 @@ a:hover{
          background-color: rgb(102, 151, 211);
      }
      #nav-bar-items a{
+         /* Navbar items which will fold out when button clicked */
         padding: 10px;
         width: 110px;
         margin-left: 0 !important;
-        
      }
      .nav-link{
-         /* padding: 5px; */
          width: 100%;
      }
     #nav-bar-items{
@@ -130,5 +133,4 @@ a:hover{
         width: 120px;
         position: fixed;
     }
-
 }
