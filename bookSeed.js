@@ -28,8 +28,11 @@ function bookSeedDB() {
                 if (err)  console.log(err);
                 else console.log('Added '+ book.title+' ! ');
             });
+        
+
         });
     });
+    return data;
 };
 
 module.exports = bookSeedDB;

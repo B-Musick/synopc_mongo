@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+    <div id="books-body">
+        <div id="books-title-container">
+            <img id="books-book-image" src="<%=book.image%>" alt="">
+            <div id="books-title">
+                <h2><%=book.title%></h2>
+                <h2><%=book.author%></h2>
+            </div>
+            <!-- Shows up when page width less than 635px -->
+            <div id="fold-down-menu-icon"><i class="fa fa-bars"></i></div>
+        </div>
+
+        <div id="books-previews-nav-container">
+            <%- include('./left-navbar.ejs') %>
+            
+
+            <!-- Once have a rating system, only show the top synopsis as the main body -->
+
+
+            <div id="books-previews-container">
+
+            </div>
+        </div>
+
+    </div>
+<%- include('../partials/footer.ejs') %>

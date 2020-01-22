@@ -15,6 +15,9 @@ let Book = require('./models/book');
 // IMPORT SEED
 var bookSeedDB = require('./bookSeed.js');
 
+// *** config file - FOR TESTING *** //
+var config = require('./_config');
+
 // Middleware to help process requests, it can go in POST request and retrieve data
 // USE BODY PARSER TO GET FORM BODY
 app.use(bodyParser.urlencoded({
@@ -38,8 +41,19 @@ app.set('view engine', 'ejs');
 app.use('/', indexRoutes);
 app.use('/books', bookRoutes);
 
-// // CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
+/***************************** DATABASES **************************************/
+
+// CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
 mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
+
+/*** FOR TEST DATABASE ***///
+// mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
+//     if (err) {
+//         console.log('Error connecting to the database. ' + err);
+//     } else {
+//         console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+//     }
+// });
 
 // CALL SEED
 bookSeedDB();

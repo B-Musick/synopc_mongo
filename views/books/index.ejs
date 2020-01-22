@@ -1,18 +1,18 @@
 <%- include('../partials/header.ejs') %>
-        <div id="books-grid-container">
-            <!-- Navbar links -->
-            <%- include('./left-navbar.ejs',{bookLinks, synopsisLinks}) %> 
-            <!-- Right columns links -->
-            <div id="i-books-container">
-                <% books.forEach(book=>{ %>
-                    <a href="/books/<%=book.title%>&<%=book.author%>" class="i-individual-book-container">
-                        <img src="<%=book.image%>" class="i-book-image">
-                        <div class="i-book-title"><%=book.title%></div>
-                        <div class="i-book-author"><%=book.author%></div>
-                    </a>
-                <% }); %>
-            </div>
+    <div id="books-grid-container">
+        <!-- Navbar links -->
+        <%- include('./left-navbar.ejs',{bookLinks, synopsisLinks}) %> 
+        <!-- Right columns links -->
+        <div id="i-books-container">
+            <% books.forEach(book=>{ %>
+                <a href="/books/<%=book._id%>" class="i-individual-book-container">
+                    <img src="<%=book.image%>" class="i-book-image">
+                    <div class="i-book-title"><%=book.title%></div>
+                    <div class="i-book-author"><%=book.author%></div>
+                </a>
+            <% }); %>
         </div>
+    </div>
 <%- include('../partials/footer.ejs') %>
 
 
