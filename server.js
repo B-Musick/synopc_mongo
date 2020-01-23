@@ -17,6 +17,8 @@ let Synopsis = require('./models/synopsis');
 
 // IMPORT SEED
 var bookSeedDB = require('./bookSeed.js');
+var synopsisSeedDB = require('./synopsisSeed.js');
+
 
 // METHOD-OVERRIDE FOR UPDATE ROUTE
 var methodOverride = require('method-override');
@@ -46,6 +48,8 @@ app.set('view engine', 'ejs');
 // ROUTE INTEGRATION
 app.use('/', indexRoutes);
 app.use('/books', bookRoutes);
+app.use('/synopsis', synopsisRoutes);
+
 
 // METHOD-OVERRIDE
 app.use(methodOverride('_method'));
@@ -65,7 +69,8 @@ mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
 });
 
 // CALL SEED
-bookSeedDB();
+// bookSeedDB();
+synopsisSeedDB();
 
 // START THE SERVER
 const PORT = process.env.PORT || 3000;

@@ -9,16 +9,15 @@ let Synopsis = require('../models/synopsis');
 dotenv.config();
 
 router.get('/', (req, res) => {
-    /* 
-        Books homepage which will show the various books in the database which 
-        have had synopsis written recently.
-    */
+    /* Synopsis homepage */
+
     // Links for left-navbar.js
     let bookLinks = ['search books', 'create book'];
     let synopsisLinks = ['write synopsis'];
 
-    Book.find({}, (err, foundBooks) => {
-        err ? console.log(err) : res.render('books/index', { books: foundBooks, bookLinks, synopsisLinks });
+  
+    Synopsis.find({}, (err, foundSynopsis) => {
+        err ? console.log(err) : res.render('synopsis/index', { synopses: foundSynopsis, bookLinks, synopsisLinks });
     });
 });
 

@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+    <div id="synopsis-page-container">
+        <div>
+            <h3>RECENT SYNOPSES</h3>
+        </div>
+        <div id="synopsis-container">
+            <!-- Alternate the colors of the synopsis printed -->
+            <% let count = 0; %>
+    
+            <% synopses.forEach(synopsis=>{ %>
+                <a href="/synopsis/<%=synopsis.author%>&<%=synopsis.book_title%>">
+                    <div class='synopsis-instance synopsis-instance-<%=count%2%>'>
+                        <div class="synopsis-book-image-column">
+                            <img src="<%=synopsis.book_image%>" class="synopsis-book-image">
+                        </div>
+                        <div id="synopsis-book-text-column">
+                            <div class="synopsis-book-title"><%=synopsis.book_title%></div>
+                            <div class="synopsis-book-author"><%=synopsis.book_author%></div>
+                        </div>
+
+                    </div>
+                </a>
+                <hr>
+                <%count++%>
+            <%})%>
+        </div>
+    </div>
+
+
+<%- include('../partials/footer.ejs') %>
+

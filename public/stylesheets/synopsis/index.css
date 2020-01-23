@@ -1,0 +1,45 @@
+
+/******************************* SEARCH RESULTS *******************************/
+
+#synopsis-page-container{
+    display: flex;
+    justify-content: center;
+    /* Had to do this since flex-wrap wasnt working */
+    flex-direction: column;
+    align-items: center;
+}
+#synopsis-container a{
+    text-decoration: none;
+    color: white;
+}
+
+.synopsis-instance{
+    padding: 20px;
+    margin: 20px 0;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.synopsis-instance-0{
+    background-color: rgb(166, 170, 190);
+}
+.synopsis-instance-1{
+    background-color: rgba(117, 19, 93, 0.73);
+}
+
+.synopsis-book-text-column{
+    grid-column: 2/3;
+}
+
+.synopsis-book-image-column{
+    grid-column: 1/2;
+
+}
+
+.synopsis-book-title{
+    margin-bottom: 20px;
+}
+.synopsis-book-image{
+    width: 40px;
+}
