@@ -12,6 +12,9 @@
 
         <div id="books-previews-nav-container">
             <%- include('./left-navbar.ejs') %>
+            <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+                <input class="delete-button" type="submit" value="DELETE">
+            </form>
             <!-- Once have a rating system, only show the top synopsis as the main body -->
             <div id="books-previews-container">
 

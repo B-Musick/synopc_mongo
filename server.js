@@ -8,9 +8,12 @@ let express    = require('express'),
 // ROUTE IMPORTS
 var indexRoutes = require('./routes/index');
 var bookRoutes = require('./routes/books');
+var synopsisRoutes = require('./routes/synopsis');
 
 // SCHEMA IMPORTS
 let Book = require('./models/book');
+let Synopsis = require('./models/synopsis');
+
 
 // IMPORT SEED
 var bookSeedDB = require('./bookSeed.js');

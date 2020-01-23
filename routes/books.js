@@ -49,6 +49,8 @@ router.get('/:title&:author', (req, res) => {
     let synopsisLinks = ['write synopsis'];
 
     Book.findOne({ title:req.params.title, author: req.params.author },(err,foundBook)=>{
+        console.log(foundBook);
+
         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
     });
 });
@@ -63,9 +65,16 @@ router.get('/:title&:author/edit',(req, res) => {
 // UPDATE ROUTE
 router.post('/:title&:author', (req, res) => {
     Book.findOneAndUpdate({ title: req.params.title, author: req.params.author }, req.body, (err, updatedBook) => {
+        console.log(updatedBook);
         err ? res.redirect('books') : res.redirect('/books/' + req.params.title+"&"+req.params.author);
     });
-
 });
+
+// DELETE ROUTE
+// router.delete('/:id',  (req, res) => {
+//     Book.findByIdAndRemove(req.params.id, (err) => {
+//         err ? res.redirect('/books') : res.redirect('/books');
+//     });
+// });
 
 module.exports = router;

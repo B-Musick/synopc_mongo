@@ -5,14 +5,14 @@ body{
     filter: brightness(125%);
     color: rgb(26, 23, 23);
 }
-#create-book-title{
+#book-title{
     text-align: center;
     padding-top: 90px;
     padding-bottom: 70px;
     font-family: 'Permanent Marker', cursive;  
     font-size: 40px;
 }
-#create-book-form-container{
+#book-form-container{
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -20,21 +20,21 @@ body{
     align-items: center;
     
 }
-#create-book-form-container form{
+#book-form-container form{
     width: 300px;
     background-color: rgb(180, 187, 189);
     padding: 10px;
     border-radius: 5px;
 }
 
-.create-book-input{
+.book-input{
     display: flex;
     justify-content: space-between;
     margin: 20px;
     
 }
 
-.create-book-input input{
+.book-input input{
     height: 30px;
     width: 170px;
     margin-bottom: 5px;
@@ -43,18 +43,17 @@ body{
     color: black;
     font-weight: 600;
 }
-.create-book-input label{
+.book-input label{
     padding-top: 5px;
 }
 
-#create-book-button{
+#book-button{
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
 button{
-    
     all: unset;
     color: white;
     justify-self: center;
