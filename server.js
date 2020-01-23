@@ -15,6 +15,9 @@ let Book = require('./models/book');
 // IMPORT SEED
 var bookSeedDB = require('./bookSeed.js');
 
+// METHOD-OVERRIDE FOR UPDATE ROUTE
+var methodOverride = require('method-override');
+
 // *** config file - FOR TESTING *** //
 var config = require('./_config');
 
@@ -40,6 +43,9 @@ app.set('view engine', 'ejs');
 // ROUTE INTEGRATION
 app.use('/', indexRoutes);
 app.use('/books', bookRoutes);
+
+// METHOD-OVERRIDE
+app.use(methodOverride('_method'));
 
 /***************************** DATABASES **************************************/
 

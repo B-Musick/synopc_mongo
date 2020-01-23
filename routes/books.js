@@ -21,6 +21,8 @@ router.get('/',(req,res)=>{
     });
 });
 
+/************ ADD BOOK TO DATABASE ***********/
+
 // NEW ROUTE (plants/create)
 router.get('/create', (req, res) => {
     res.render('books/new')
@@ -39,11 +41,9 @@ router.post('/',  (req, res) => {
     });
 });
 
+// SHOW ROUTE
 router.get('/:title&:author', (req, res) => {
-    /* 
-        Books homepage which will show the various books in the database which 
-        have had synopsis written recently.
-    */
+
     // Links for left-navbar.js
     let bookLinks = ['search books', 'create book'];
     let synopsisLinks = ['write synopsis'];
@@ -51,6 +51,21 @@ router.get('/:title&:author', (req, res) => {
     Book.findOne({ title:req.params.title, author: req.params.author },(err,foundBook)=>{
         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
     });
+});
+
+// EDIT ROUTE
+router.get('/:title&:author/edit',(req, res) => {
+    Book.findOne({ title: req.params.title, author: req.params.author }, (err, foundBook) => {
+        err ? res.redirect('/books') : res.render('books/edit', { book: foundBook });
+    });
+});
+
+// UPDATE ROUTE
+router.post('/:title&:author', (req, res) => {
+    Book.findOneAndUpdate({ title: req.params.title, author: req.params.author }, req.body, (err, updatedBook) => {
+        err ? res.redirect('books') : res.redirect('/books/' + req.params.title+"&"+req.params.author);
+    });
+
 });
 
 module.exports = router;
