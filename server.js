@@ -44,16 +44,16 @@ app.use('/books', bookRoutes);
 /***************************** DATABASES **************************************/
 
 // CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
-mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
+// mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
 
 /*** FOR TEST DATABASE ***///
-// mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
-//     if (err) {
-//         console.log('Error connecting to the database. ' + err);
-//     } else {
-//         console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
-//     }
-// });
+mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
+    if (err) {
+        console.log('Error connecting to the database. ' + err);
+    } else {
+        console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+    }
+});
 
 // CALL SEED
 bookSeedDB();

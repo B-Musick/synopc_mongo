@@ -15,8 +15,8 @@ var data = [
     }
 ]
 
-function bookSeedDB() {
-    Book.deleteMany({}, function (err) {
+bookSeedDB=()=> {
+    Book.deleteMany({}, (err)=> {
         // Remove all existing books
         if (err) console.log(err); 
         console.log('removed book!');

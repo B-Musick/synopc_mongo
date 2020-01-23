@@ -21,7 +21,25 @@ router.get('/',(req,res)=>{
     });
 });
 
-router.get('/:id', (req, res) => {
+// NEW ROUTE (plants/create)
+router.get('/create', (req, res) => {
+    res.render('books/new')
+});
+
+// CREATE ROUTE (/books)
+router.post('/',  (req, res) => {
+    var newBook = {
+        author: req.body.author,
+        title: req.body.title,
+        image: req.body.image
+    };
+
+    Book.create(newBook, (err, plant) => {
+        err ? console.log(err) : res.redirect('/books');
+    });
+});
+
+router.get('/:title&:author', (req, res) => {
     /* 
         Books homepage which will show the various books in the database which 
         have had synopsis written recently.
@@ -30,7 +48,7 @@ router.get('/:id', (req, res) => {
     let bookLinks = ['search books', 'create book'];
     let synopsisLinks = ['write synopsis'];
 
-    Book.findById(req.params.id, (err, foundBook) => {
+    Book.findOne({ title:req.params.title, author: req.params.author },(err,foundBook)=>{
         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
     });
 });
