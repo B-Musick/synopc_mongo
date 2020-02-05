@@ -17,4 +17,14 @@ router.post('/register', (req, res) => {
     });
 })
 
+/****** LOGIN ROUTES ******/
+router.get('/login',(req,res)=>res.render('login'));
+
+router.post('/login',passport.authenticate('local', // Authenticate local strategy
+    {
+        successRedirect: '/',
+        failureRedirect: '/login'
+    }
+),(req,res)=>{});
+
 module.exports = router;

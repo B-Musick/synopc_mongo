@@ -4,4 +4,6 @@
 
 # TO DO
 - Delete route to books doesnt work
+- Combine styling of register and login routes since similiar
 
+https://github.com/B-Musick/synopc_mongo

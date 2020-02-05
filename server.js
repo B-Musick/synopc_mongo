@@ -5,7 +5,8 @@ let express         = require('express'),
     dotenv          = require('dotenv'),
     mongoose        = require('mongoose'), // Used for connecting to database, schema
     passport        = require('passport'),
-    LocalStrategy   = require('passport-local'); 
+    LocalStrategy   = require('passport-local')
+    passportLocalMongoose = require('passport-local-mongoose');
     
 // ROUTE IMPORTS
 var indexRoutes = require('./routes/index');
@@ -48,10 +49,6 @@ app.use(morgan('dev'));
 // SET VIEW ENGINE SO DONT HAVE TO TYPE .ejs WHEN RENDER
 app.set('view engine', 'ejs'); 
 
-// ROUTE INTEGRATION
-app.use('/', indexRoutes);
-app.use('/books', bookRoutes);
-app.use('/synopsis', synopsisRoutes);
 
 
 // METHOD-OVERRIDE
@@ -88,6 +85,12 @@ mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }
 // CALL SEED
 // bookSeedDB();
 // synopsisSeedDB();
+
+// ROUTE INTEGRATION - Make sure under Passport otherwise 
+// https://github.com/jaredhanson/passport/issues/619 
+app.use('/', indexRoutes);
+app.use('/books', bookRoutes);
+app.use('/synopsis', synopsisRoutes);
 
 // START THE SERVER
 const PORT = process.env.PORT || 3000;
