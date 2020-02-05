@@ -49,7 +49,14 @@ app.use(morgan('dev'));
 // SET VIEW ENGINE SO DONT HAVE TO TYPE .ejs WHEN RENDER
 app.set('view engine', 'ejs'); 
 
-
+// APPLY currentUser ALL ROUTES SINCE IN HEADER
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    // Set up locals for error and message
+    // res.locals.error = req.flash('error');
+    // res.locals.success = req.flash("success");
+    next(); // This moves to the next middleware route
+});
 
 // METHOD-OVERRIDE
 app.use(methodOverride('_method'));
@@ -83,8 +90,8 @@ mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }
 // });
 
 // CALL SEED
-// bookSeedDB();
-// synopsisSeedDB();
+bookSeedDB();
+synopsisSeedDB();
 
 // ROUTE INTEGRATION - Make sure under Passport otherwise 
 // https://github.com/jaredhanson/passport/issues/619 

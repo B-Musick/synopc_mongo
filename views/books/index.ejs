@@ -5,7 +5,7 @@
         <!-- Right columns links -->
         <div id="i-books-container">
             <% books.forEach(book=>{ %>
-                <a href="/books/<%=book.title%>&<%=book.author%>" class="i-individual-book-container">
+                <a href="/books/<%=book._id%>" class="i-individual-book-container">
                     <img src="<%=book.image%>" class="i-book-image">
                     <div class="i-book-title"><%=book.title%></div>
                     <div class="i-book-author"><%=book.author%></div>

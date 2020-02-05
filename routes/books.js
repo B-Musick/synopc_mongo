@@ -42,39 +42,36 @@ router.post('/',  (req, res) => {
 });
 
 // SHOW ROUTE
-router.get('/:title&:author', (req, res) => {
-
+router.get('/:id', (req, res) => {
     // Links for left-navbar.js
     let bookLinks = ['search books', 'create book'];
     let synopsisLinks = ['write synopsis'];
 
-    Book.findOne({ title:req.params.title, author: req.params.author },(err,foundBook)=>{
-        console.log(foundBook);
-
+    Book.findById(req.params.id,(err,foundBook)=>{
         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
     });
 });
 
 // EDIT ROUTE
-router.get('/:title&:author/edit',(req, res) => {
-    Book.findOne({ title: req.params.title, author: req.params.author }, (err, foundBook) => {
+router.get('/:id/edit',(req, res) => {
+    Book.findById(req.params.id, (err, foundBook) => {
         err ? res.redirect('/books') : res.render('books/edit', { book: foundBook });
     });
 });
 
 // UPDATE ROUTE
-router.post('/:title&:author', (req, res) => {
-    Book.findOneAndUpdate({ title: req.params.title, author: req.params.author }, req.body, (err, updatedBook) => {
+router.put('/:id', (req, res) => {
+    Book.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
         console.log(updatedBook);
-        err ? res.redirect('books') : res.redirect('/books/' + req.params.title+"&"+req.params.author);
+        err ? res.redirect('books') : res.redirect('/books/' + req.params.id);
     });
 });
 
 // DELETE ROUTE
-// router.delete('/:id',  (req, res) => {
-//     Book.findByIdAndRemove(req.params.id, (err) => {
-//         err ? res.redirect('/books') : res.redirect('/books');
-//     });
-// });
+router.delete('/:id',  (req, res) => {
+    Book.findByIdAndRemove(req.params.id, (err, removedBook) => {
+        err ? res.redirect('/books') : res.redirect('/books');
+    });
+});
 
 module.exports = router;
