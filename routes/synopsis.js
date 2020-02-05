@@ -43,17 +43,27 @@ router.post('/:author&:title', (req, res) => {
     });
 });
 
-// SHOW ROUTE
-router.get('/:author&:title&:id', (req, res) => {
+// SHOW ROUTE FIND ALL BY 
+// router.get('/:author&:title', (req, res) => {
 
+//     // Links for left-navbar.js
+//     let bookLinks = ['search books', 'create book'];
+//     let synopsisLinks = ['write synopsis'];
+
+//     Synopsis.find({ book_title: req.params.title }, (err, foundSynopses) => {
+//         console.log(foundSynopses);
+
+//         err ? console.log(err) : res.render('synopsis/show', { synopses: foundSynopses, id:req.params.id, bookLinks, synopsisLinks });
+//     });
+// });
+// SHOW ROUTE FIND ALL BY 
+router.get('/:id', (req, res) => {
     // Links for left-navbar.js
     let bookLinks = ['search books', 'create book'];
     let synopsisLinks = ['write synopsis'];
 
-    Synopsis.find({ book_title: req.params.title }, (err, foundSynopses) => {
-        console.log(foundSynopses);
-
-        err ? console.log(err) : res.render('synopsis/show', { synopses: foundSynopses, id:req.params.id, bookLinks, synopsisLinks });
+    Synopsis.findById(req.params.id, (err, foundSynopses) => {
+        err ? console.log(err) : res.render('synopsis/show', { synopses: foundSynopses, bookLinks, synopsisLinks });
     });
 });
 
@@ -72,11 +82,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// // DELETE ROUTE
-// // router.delete('/:id',  (req, res) => {
-// //     Book.findByIdAndRemove(req.params.id, (err) => {
-// //         err ? res.redirect('/books') : res.redirect('/books');
-// //     });
-// // });
+// DELETE ROUTE
+router.delete('/:id',  (req, res) => {
+    Synopsis.findByIdAndRemove(req.params.id, (err, removedSynopsis) => {
+        err ? res.redirect('/synopsis') : res.redirect('/synopsis');
+    });
+});
 
 module.exports = router;

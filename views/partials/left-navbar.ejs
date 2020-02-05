@@ -12,7 +12,7 @@
             <%if(synopses){%>
                 <!-- If a synopses page, then have a link to write -->
                 <% synopsisLinks.forEach(link=>{ %>
-                    <a href="/synopsis/<%=link.split(' ')[0]%>" class="navbar-link">
+                    <a href="/synopsis/<%=synopses.book_author%>&<%=synopses.book_title%>/<%=link.split(' ')[0]%>" class="navbar-link">
                         <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
                     </a>
                 <%});%>

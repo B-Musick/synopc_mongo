@@ -78,7 +78,7 @@ passport.deserializeUser(User.deserializeUser());
 /***************************** DATABASES **************************************/
 
 // CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
-mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
+mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true, useFindAndModify: false  }; 
 
 /*** FOR TEST DATABASE ***///
 // mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {

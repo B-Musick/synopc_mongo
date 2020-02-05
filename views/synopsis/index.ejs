@@ -12,7 +12,7 @@
         
                 <!-- Loop through all the synopses -->
                 <% synopses.forEach(synopsis=>{ %>
-                    <a href="/synopsis/<%=synopsis.book_author%>&<%=synopsis.book_title%>&<%=synopsis._id%>">
+                    <a href="/synopsis/<%=synopsis.id%>">
                         <div class='synopsis-instance synopsis-instance-<%=count%2%>'>
                             <div class="synopsis-book-image-column">
                                 <img src="<%=synopsis.book_image%>" class="synopsis-book-image">
