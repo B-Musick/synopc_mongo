@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+    <div id="synopsis-body">
+        <!-- Header with book title, image and author -->
+        <div id="synopsis-title-container">
+            <img id="synopsis-book-image" src="<%=synopses[0].book_image%>" alt="">
+            <div id="synopsis-title">
+                <h2><%=synopses[0].book_title%></h2>
+                <h2><%=synopses[0].book_author%></h2>
+            </div>
+        </div>
+        <!-- Links to the form where author and title are automatic values -->     
+            <div id="books-grid-container">
+                <!-- LEFT navbar column -->
+                <%- include('../partials/left-navbar.ejs',{synopses, bookLinks, synopsisLinks}) %>
+
+                <!-- RIGHT COLUMN - shows individual synopsis about book (snippets) -->
+                <div id="synopsis-previews-container">
+
+                    <%synopses.forEach(syn=>{%>
+                        <%if(syn.id === id){%>
+                            <!-- Print the current synopsis the user clicked on -->
+                            <div id="current-synopsis-container"> 
+                                <div id="synopsis-title">
+                                    Synopsis By: <%=syn.author%>
+                                </div>
+                                <div id="synopsis-body">
+                                    <%=syn.body%>
+                                </div>
+                            </div>
+                        <%}else{%>
+                            <!-- Print other synopsis which have been written -->
+                            <div id="synopsis-preview">
+                                <div id="synopsis-preview-user-icon">
+                                    <div>
+                                        <%=syn.author%>
+                                    </div>
+                                </div>
+                                <div id="synopsis-preview-text">
+                                    <!-- If there is a synopsis printout, then print a substring -->
+                                    <%if(syn.body){%>
+                                        <div><%=syn.body.substring(0,300)%></div>
+                                    <%}%>
+                                    <a href="/synopsis/<%=syn._id%>/edit"><div>Edit</div></a>
+                                </div>
+                            </div>
+                            <%}%>
+                    <%});%>
+                </div>
+            </div>
+        </div> <!-- Grid container for left links and synopsis printouts -->
+    </div>
+<%- include('../partials/footer.ejs') %>

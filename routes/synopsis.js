@@ -21,54 +21,56 @@ router.get('/', (req, res) => {
     });
 });
 
-// /************ ADD BOOK TO DATABASE ***********/
+// /************ ADD SYNOPSIS TO DATABASE ***********/
 
-// // NEW ROUTE (plants/create)
-// router.get('/create', (req, res) => {
-//     res.render('books/new')
-// });
+// NEW ROUTE (synopsis/create)
+router.get('/:author&:title/write', (req, res) => {
+    res.render('synopsis/new',{book_title: req.params.title, book_author: req.params.author})
+});
 
-// // CREATE ROUTE (/books)
-// router.post('/', (req, res) => {
-//     var newBook = {
-//         author: req.body.author,
-//         title: req.body.title,
-//         image: req.body.image
-//     };
+// CREATE ROUTE (/synopsis)
+router.post('/:author&:title', (req, res) => {
+    var newSynopsis = {
+        book_author: req.body.book_author,
+        book_title: req.body.book_title,
+        book_image: req.body.book_image,
+        author: req.body.author,
+        body: req.body.body
+    };
 
-//     Book.create(newBook, (err, plant) => {
-//         err ? console.log(err) : res.redirect('/books');
-//     });
-// });
+    Synopsis.create(newSynopsis, (err, synopsis) => {
+        err ? console.log(err) : res.redirect('/synopsis');
+    });
+});
 
-// // SHOW ROUTE
-// router.get('/:title&:author', (req, res) => {
+// SHOW ROUTE
+router.get('/:author&:title&:id', (req, res) => {
 
-//     // Links for left-navbar.js
-//     let bookLinks = ['search books', 'create book'];
-//     let synopsisLinks = ['write synopsis'];
+    // Links for left-navbar.js
+    let bookLinks = ['search books', 'create book'];
+    let synopsisLinks = ['write synopsis'];
 
-//     Book.findOne({ title: req.params.title, author: req.params.author }, (err, foundBook) => {
-//         console.log(foundBook);
+    Synopsis.find({ book_title: req.params.title }, (err, foundSynopses) => {
+        console.log(foundSynopses);
 
-//         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
-//     });
-// });
+        err ? console.log(err) : res.render('synopsis/show', { synopses: foundSynopses, id:req.params.id, bookLinks, synopsisLinks });
+    });
+});
 
-// // EDIT ROUTE
-// router.get('/:title&:author/edit', (req, res) => {
-//     Book.findOne({ title: req.params.title, author: req.params.author }, (err, foundBook) => {
-//         err ? res.redirect('/books') : res.render('books/edit', { book: foundBook });
-//     });
-// });
+// EDIT ROUTE
+router.get('/:id/edit', (req, res) => {
+    Synopsis.findById(req.params.id,  (err, foundSynopses) => {
+        err ? res.redirect('/synopsis') : res.render('synopsis/edit', { synopses: foundSynopses });
+    });
+});
 
-// // UPDATE ROUTE
-// router.post('/:title&:author', (req, res) => {
-//     Book.findOneAndUpdate({ title: req.params.title, author: req.params.author }, req.body, (err, updatedBook) => {
-//         console.log(updatedBook);
-//         err ? res.redirect('books') : res.redirect('/books/' + req.params.title + "&" + req.params.author);
-//     });
-// });
+// UPDATE ROUTE
+router.put('/:id', (req, res) => {
+    Synopsis.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
+        console.log(updatedBook);
+        err ? res.redirect('synopsis') : res.redirect('/synopsis/' + req.params.id);
+    });
+});
 
 // // DELETE ROUTE
 // // router.delete('/:id',  (req, res) => {

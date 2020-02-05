@@ -1,0 +1,86 @@
+#synopsis-body{
+    width: 100%;
+    height: 100%;
+}
+#synopsis-title-container{
+    /* margin-top: 40px; */
+    padding: 60px 0;
+    color: white;
+    width: 100%;
+    background-color:rgb(166, 170, 190);
+    /* border-top: 10px solid rgb(70, 18, 18); */
+    border-bottom: 1px solid  rgb(129, 132, 146);
+    display: flex;
+    justify-content: center;
+}
+#synopsis-book-image{
+    width: 100px;
+    margin-right: 40px;
+}
+
+/************************** SYNOPSES PREVIEWS *********************************/
+
+#synopsis-previews-nav-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+#synopsis-previews-container{
+    /* Full container containing all the synopsis for the books */
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#synopsis-preview-left-column{
+    grid: 1/2;
+    height: 100%;
+    width: 100%;
+}
+
+#synopsis-preview{
+    grid: 2/3;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 110px 75%;
+  
+    margin-bottom: 10px;
+    margin-top: 10px;;
+    
+    
+
+}
+#synopsis-preview-user-icon{
+    font-size: 12px;
+    grid: 1/2;
+    padding: 10px;
+    background-color: rgb(71, 169, 143);
+    border: 1px solid rgb(60, 143, 121);
+
+}
+
+#synopsis-preview-text{
+    grid: 2/3;
+    padding: 10px;
+    background-color: rgb(161, 232, 213);
+    border: 1px solid rgb(60, 143, 121);
+}
+
+@media(max-width: 635px){
+    #synopsis-previews-nav-container{
+        grid-template-columns: 0% 100%;
+    }
+}
+
+#current-synopsis-container{
+
+}
+
+#synopsis-title{
+    font-size: medium;
+    
+}
+
+#synopsis-body{
+
+}
+                   

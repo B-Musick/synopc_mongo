@@ -1,9 +1,11 @@
-let express    = require('express'),
-    bodyParser = require('body-parser'),
-    app        = express(),
-    morgan     = require('morgan'),
-    dotenv     = require('dotenv'),
-    mongoose   = require('mongoose'); // Used for connecting to database, schema
+let express         = require('express'),
+    bodyParser      = require('body-parser'),
+    app             = express(),
+    morgan          = require('morgan'),
+    dotenv          = require('dotenv'),
+    mongoose        = require('mongoose'), // Used for connecting to database, schema
+    passport        = require('passport'),
+    LocalStrategy   = require('passport-local'); 
     
 // ROUTE IMPORTS
 var indexRoutes = require('./routes/index');
@@ -13,6 +15,7 @@ var synopsisRoutes = require('./routes/synopsis');
 // SCHEMA IMPORTS
 let Book = require('./models/book');
 let Synopsis = require('./models/synopsis');
+let User = require('./models/user');
 
 
 // IMPORT SEED
@@ -54,23 +57,37 @@ app.use('/synopsis', synopsisRoutes);
 // METHOD-OVERRIDE
 app.use(methodOverride('_method'));
 
+/***************************** PASSPORT **************************************/
+app.use(require('express-session')({
+    secret: process.env.COOKIE,
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 /***************************** DATABASES **************************************/
 
 // CONNECT THE DATABASE RUNNING ON DEFAULT PORT 27017
-// mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
+mongoose.connect("mongodb://localhost:27017/synop-c"), { useNewUrlParser: true }; 
 
 /*** FOR TEST DATABASE ***///
-mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
-    if (err) {
-        console.log('Error connecting to the database. ' + err);
-    } else {
-        console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
-    }
-});
+// mongoose.connect(config.mongoURI[app.settings.env], function (err, res) {
+//     if (err) {
+//         console.log('Error connecting to the database. ' + err);
+//     } else {
+//         console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+//     }
+// });
 
 // CALL SEED
 // bookSeedDB();
-synopsisSeedDB();
+// synopsisSeedDB();
 
 // START THE SERVER
 const PORT = process.env.PORT || 3000;

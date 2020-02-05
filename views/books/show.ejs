@@ -11,7 +11,7 @@
         </div>
 
         <div id="books-previews-nav-container">
-            <%- include('./left-navbar.ejs') %>
+            <%- include('../partials/left-navbar.ejs',{synopses: ''}) %>
             <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
                 <input class="delete-button" type="submit" value="DELETE">
             </form>

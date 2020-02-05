@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
     <div id="books-grid-container">
         <!-- Navbar links -->
-        <%- include('./left-navbar.ejs',{bookLinks, synopsisLinks}) %> 
+        <%- include('../partials/left-navbar.ejs',{bookLinks, synopsisLinks, synopses:''}) %> 
         <!-- Right columns links -->
         <div id="i-books-container">
             <% books.forEach(book=>{ %>

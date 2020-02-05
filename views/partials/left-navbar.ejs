@@ -5,16 +5,25 @@
     <nav id="i-books-left-column-nav">
         <ul>
             <% bookLinks.forEach(link=>{ %>
-                <a href="/books/<%=link.split(' ')[0]%>" >
+                <a href="/books/<%=link.split(' ')[0]%>" class="navbar-link">
                     <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
                 </a>
             <%});%>
-            <% synopsisLinks.forEach(link=>{ %>
-                <a href="/synopsis/<%=link.split(' ')[0]%>">
-                    <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
-                </a>
-            <%});%>
-
+            <%if(synopses){%>
+                <!-- If a synopses page, then have a link to write -->
+                <% synopsisLinks.forEach(link=>{ %>
+                    <a href="/synopsis/<%=link.split(' ')[0]%>" class="navbar-link">
+                        <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
+                    </a>
+                <%});%>
+            <%}else{%>
+                <!-- If a books page, then have a link to write -->
+                <% synopsisLinks.forEach(link=>{ %>
+                    <a href="/synopsis/<%=link.split(' ')[0]%>" class="navbar-link">
+                        <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
+                    </a>
+                <%});%>
+            <%}%>
         </ul>
     </nav>
 </div>
