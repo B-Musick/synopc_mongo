@@ -24,28 +24,18 @@ router.get('/',(req,res)=>{
 /************ ADD BOOK TO DATABASE ***********/
 
 // NEW ROUTE (plants/create)
-router.get('/create', (req, res) => {
-    res.render('books/new')
-});
+router.get('/create', (req, res) => { res.render('books/new') });
 
 // CREATE ROUTE (/books)
 router.post('/',  (req, res) => {
-    var newBook = {
-        author: req.body.author,
-        title: req.body.title,
-        image: req.body.image
-    };
-
-    Book.create(newBook, (err, plant) => {
-        err ? console.log(err) : res.redirect('/books');
-    });
+    var newBook = { author: req.body.author, title: req.body.title, image: req.body.image };
+    Book.create(newBook, (err, book) => { err ? console.log(err) : res.redirect('/books'); });
 });
 
 // SHOW ROUTE
 router.get('/:id', (req, res) => {
     // Links for left-navbar.js
-    let bookLinks = ['search books', 'create book'];
-    let synopsisLinks = ['write synopsis'];
+    let bookLinks = ['search books', 'create book'],synopsisLinks = ['write synopsis'];
 
     Book.findById(req.params.id,(err,foundBook)=>{
         err ? console.log(err) : res.render('books/show', { book: foundBook, bookLinks, synopsisLinks });
@@ -62,7 +52,6 @@ router.get('/:id/edit',(req, res) => {
 // UPDATE ROUTE
 router.put('/:id', (req, res) => {
     Book.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
-        console.log(updatedBook);
         err ? res.redirect('books') : res.redirect('/books/' + req.params.id);
     });
 });
