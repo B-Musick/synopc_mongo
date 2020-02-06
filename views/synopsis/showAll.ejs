@@ -1,15 +1,12 @@
 <%- include('../partials/header.ejs') %>
 <div id="synopsis-body">
     <!-- Header with book title, image and author -->
-    <div id="synopsis-title-container">
-        <img id="synopsis-book-image" src="<%=synopses[0].book_image%>" alt="">
-        <div id="synopsis-title">
-            <h2><%=synopses[0].book_title%></h2>
-            <h2><%=synopses[0].book_author%></h2>
-        </div>
-    </div>
+        <%- include('../partials/book-show-title.ejs',
+                    {image:synopses[0].book_image, title:synopses[0].book_title,author:synopses[0].book_author}) %>
+
+
     <!-- Links to the form where author and title are automatic values -->
-    <div id="books-grid-container">
+    <div class="books-grid-container">
         <!-- LEFT navbar column -->
         <%- include('../partials/left-navbar.ejs',{synopses, bookLinks, synopsisLinks}) %>
 

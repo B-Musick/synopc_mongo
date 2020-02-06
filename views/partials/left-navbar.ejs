@@ -1,29 +1,58 @@
-<!-- Include this in the web page in grid container
-    
--->
-<div id="i-books-left-column">
-    <nav id="i-books-left-column-nav">
-        <ul>
+<!-- Include this in the web page in grid container -->
+<div class="left-column">
+    <nav class="left-column-nav">
+        <div class="navbar-mini-header top">links</div>
             <% bookLinks.forEach(link=>{ %>
                 <a href="/books/<%=link.split(' ')[0]%>" class="navbar-link">
-                    <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
+                    <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
                 </a>
             <%});%>
+            <% if(book){ %>
+                <a href="/synopsis/<%=book.author%>&<%=book.title%>" class="navbar-link">
+                    <div class="left-column-nav-div">view synopsis</div>
+                </a>
+                <a href="/synopsis/<%=book.author%>&<%=book.title%>/write" class="navbar-link">
+                    <div class="left-column-nav-div">write synopsis</div>
+                </a>
+                
+            <%}else{}%>
             <%if(synopses){%>
                 <!-- If a synopses page, then have a link to write -->
                 <% synopsisLinks.forEach(link=>{ %>
                     <a href="/synopsis/<%=synopses.book_author%>&<%=synopses.book_title%>/<%=link.split(' ')[0]%>" class="navbar-link">
-                        <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
+                        <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
                     </a>
                 <%});%>
             <%}else{%>
                 <!-- If a books page, then have a link to write -->
                 <% synopsisLinks.forEach(link=>{ %>
                     <a href="/synopsis/<%=link.split(' ')[0]%>" class="navbar-link">
-                        <div class="i-books-left-column-nav-div"><%=link.toUpperCase()%></div>
+                        <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
                     </a>
                 <%});%>
             <%}%>
-        </ul>
+            <% if(!currentUser){ %>
+                <div class="navbar-mini-header">user links</div>
+                <a href="/login"><div>login</div></a>
+                <a href="/register"><div>sign up</div></a>
+            <% }else{ %>
+                <div class="navbar-mini-header">Signed In As <%= currentUser.username %></div>
+                <a href="/logout"> <div>logout</div></a>
+                <%if(currentUser){%>
+                <!-- If the current user wrote the synopses they can edit it -->
+                
+                    <div class="navbar-mini-header">edit synopses</div>
+                    <a href="/books/<%=synopses._id%>/edit">
+                        <div>edit</div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <form action="/books/<%=synopses._id%>?_method=DELETE" method="POST">
+                                <input style="all:unset" type="submit" value="DELETE">
+                        </div>
+                        </form>
+                    </a>
+                <%}%>       
+            <% } %> <!-- Current user buttons -->
     </nav>
 </div>

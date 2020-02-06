@@ -1,26 +1,12 @@
 <%- include('../partials/header.ejs') %>
     <div id="books-body">
-        <div id="books-title-container">
-            <img id="books-book-image" src="<%=book.image%>" alt="">
-            <div id="books-title">
-                <h2><%=book.title%></h2>
-                <h2><%=book.author%></h2>
-            </div>
-            <!-- Shows up when page width less than 635px -->
-            <div id="fold-down-menu-icon"><i class="fa fa-bars"></i></div>
-        </div>
+        <%- include('../partials/book-show-title.ejs',
+            {image:book.image, title:book.title, author:book.author}) %>
 
-        <div id="books-previews-nav-container">
-            <%- include('../partials/left-navbar.ejs',{synopses: ''}) %>
-            <a href="/books/<%=book._id%>/edit"><input class="edit-button" type="submit" value="EDIT"></a>
-            
-            <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-                <input class="delete-button" type="submit" value="DELETE">
-            </form>
+        <div class="books-grid-container">
+            <%- include('../partials/left-navbar.ejs',{synopses: '',book}) %>
+
             <!-- Once have a rating system, only show the top synopsis as the main body -->
-            <div id="books-previews-container">
-
-            </div>
         </div>
     </div>
 <%- include('../partials/footer.ejs') %>

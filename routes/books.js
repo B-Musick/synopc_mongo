@@ -3,6 +3,7 @@ let express = require('express');
     dotenv = require('dotenv');
 
 let Book = require('../models/book');
+var middleware = require('../middleware');
 
 // Set up the .env file to access through process.env.VALUE
 dotenv.config();
@@ -24,7 +25,7 @@ router.get('/',(req,res)=>{
 /************ ADD BOOK TO DATABASE ***********/
 
 // NEW ROUTE (plants/create)
-router.get('/create', (req, res) => { res.render('books/new') });
+router.get('/create', middleware.isLoggedIn,(req, res) => { res.render('books/new') });
 
 // CREATE ROUTE (/books)
 router.post('/',  (req, res) => {
@@ -43,7 +44,7 @@ router.get('/:id', (req, res) => {
 });
 
 // EDIT ROUTE
-router.get('/:id/edit',(req, res) => {
+router.get('/:id/edit', middleware.isLoggedIn,(req, res) => {
     Book.findById(req.params.id, (err, foundBook) => {
         err ? res.redirect('/books') : res.render('books/edit', { book: foundBook });
     });

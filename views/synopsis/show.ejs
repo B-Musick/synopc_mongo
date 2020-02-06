@@ -1,15 +1,11 @@
 <%- include('../partials/header.ejs') %>
     <div id="synopsis-body">
         <!-- Header with book title, image and author -->
-        <div id="synopsis-title-container">
-            <img id="synopsis-book-image" src="<%=synopses.book_image%>" alt="">
-            <div id="synopsis-title">
-                <h2><%=synopses.book_title%></h2>
-                <h2><%=synopses.book_author%></h2>
-            </div>
-        </div>
+        <%- include('../partials/book-show-title.ejs',
+            {image:synopses.book_image, title:synopses.book_title,author:synopses.book_author}) %>
+
         <!-- Links to the form where author and title are automatic values -->     
-            <div id="books-grid-container">
+            <div class="books-grid-container">
                 <!-- LEFT navbar column -->
                 <%- include('../partials/left-navbar.ejs',{synopses, bookLinks, synopsisLinks}) %>
 
@@ -18,17 +14,12 @@
                     <!-- Print the current synopsis the user clicked on -->
                     <div id="current-synopsis-container"> 
                         <div id="synopsis-title">
-                            Synopsis By: <%=synopses.author%>
+                            synopsis by: <%=synopses.author.username%>
                         </div>
                         <div id="synopsis-body">
                             <%=synopses.body%>
                         </div>
                     </div>
-                    <a href="/synopsis/<%=synopses._id%>/edit"><input class="edit-button" type="submit" value="EDIT"></a>
-                    
-                    <form action="/synopsis/<%=synopses._id%>?_method=DELETE" method="POST">
-                        <input class="delete-button" type="submit" value="DELETE">
-                    </form>
                 </div>
             </div>
         </div> <!-- Grid container for left links and synopsis printouts -->

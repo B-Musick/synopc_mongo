@@ -1,9 +1,9 @@
 <%- include('../partials/header.ejs') %>
-    <div id="books-grid-container">
+    <div class="books-grid-container">
         <!-- Navbar links -->
-        <%- include('../partials/left-navbar.ejs',{bookLinks, synopsisLinks, synopses:''}) %> 
+        <%- include('../partials/left-navbar.ejs',{currentUser,bookLinks, synopsisLinks, synopses:'',book:''}) %> 
         <!-- Right columns links -->
-        <div id="i-books-container">
+        <div class="books-container">
             <% books.forEach(book=>{ %>
                 <a href="/books/<%=book._id%>" class="i-individual-book-container">
                     <img src="<%=book.image%>" class="i-book-image">

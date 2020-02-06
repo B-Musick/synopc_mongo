@@ -1,0 +1,20 @@
+#books-body{
+    /* Full books container below header */
+    padding:0;
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+    color: white;
+}
+#books-title-container{
+    padding: 60px 0;
+    width: 100%;
+    background-color: rgb(166, 170, 190);
+    border-bottom: 1px solid rgb(129, 132, 146);
+    display: flex;
+    justify-content: center;
+}
+#books-book-image{
+    width: 100px;
+    margin-right: 40px;
+}

@@ -1,0 +1,37 @@
+.left-column{
+    /* padding-left: 40px; */
+    
+    font-size: 1.5vw;
+    background-color: rgb(43, 19, 43);
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.left-column-nav a{
+    position: relative;
+    text-decoration: none;
+    color: white !important;
+    left: 40px;
+    width: auto;
+}
+.left-column-nav a div{
+    padding: 5px 0;
+    border-bottom: 1px dashed white;
+    margin-right: 0;
+     width: calc(100% - 40px);
+} 
+.navbar-mini-header{
+    color: rgb(121, 63, 121);
+    background-color: rgb(121, 63, 121);
+    position: relative;
+    left:0 !important;
+    text-align: center;
+    color: rgb(43, 19, 43);
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border: 3px solid rgb(43, 19, 43);
+}
+.top{
+    margin-top: 0;
+}

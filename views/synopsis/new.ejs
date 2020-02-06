@@ -17,6 +17,7 @@
             <!-- If create synopsis from author and book -->
             <div id="create-book-title">SYNOPSIS</div>
             <form action="/synopsis/<%=book_title%>&<%=book_author%>" method="POST">
+                <input type="hidden" name="book_image" id="book_image" value="<%=book.image%>" >
                 <div class="create-synopsis-input">
                     <label for="book_title">Title</label>
                     <input type="text" name="book_title" id="book_title" value="<%=book_title%>" readonly>
@@ -27,7 +28,7 @@
                 </div>
                 <div class="create-synopsis-input">
                     <label for="synopsis_author">Username</label>
-                    <input type="text" name="author" id="author" value="">
+                    <input type="text" name="author" id="author" value="<%=currentUser.username%>" readonly>
                 </div>
                 <div class="create-synopsis-input">
                     <textarea name="body" id="body" placeholder="Synopsis"></textarea>
