@@ -6,16 +6,17 @@ middlewareObj.isLoggedIn = (req,res,next) =>{
     if(req.isAuthenticated()) return next() 
     res.redirect('/login');
 }
-middlewareObj.checkSynopsisOwnership = (res, req, next) => {
+middlewareObj.checkSynopsisOwnership = (req,res, next) => {
     if (req.isAuthenticated()) {
         Synopsis.findById(req.params.id, (err, foundSynopsis) => {
-            if (err) res.redirect('back');
+            if (err) res.redirect('/synopsis');
             else {
-                foundPlant.author.id.equals(req.user.id) ? next() : res.redirect('back');
+                foundSynopsis.author.id.equals(req.user.id) ? next() : res.redirect('/synopsis');
             }
         });
     } 
-    else res.redirect('back');
+    else res.redirect('/synopsis');
 }
+
 
 module.exports = middlewareObj;

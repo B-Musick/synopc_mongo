@@ -27,7 +27,7 @@
     height: 100px;
     display: grid;
     grid-template-columns: 110px 75%;
-  
+
     margin-bottom: 10px;
     margin-top: 10px;;
     
@@ -51,10 +51,13 @@
 }
 
 @media(max-width: 635px){
-    #synopsis-previews-nav-container{
-        grid-template-columns: 0% 100%;
+
+    #synopsis-previews-container{
+        position: absolute;
+        width: 100%;
     }
 }
+
 
 #current-synopsis-container{
     padding-top: 20px;

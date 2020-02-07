@@ -2,34 +2,37 @@
 <div class="left-column">
     <nav class="left-column-nav">
         <div class="navbar-mini-header top">links</div>
-            <% bookLinks.forEach(link=>{ %>
-                <a href="/books/<%=link.split(' ')[0]%>" class="navbar-link">
-                    <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
-                </a>
-            <%});%>
-            <% if(book){ %>
-                <a href="/synopsis/<%=book.author%>&<%=book.title%>" class="navbar-link">
-                    <div class="left-column-nav-div">view synopsis</div>
-                </a>
-                <a href="/synopsis/<%=book.author%>&<%=book.title%>/write" class="navbar-link">
+        <!-- Links appear no matter which page -->
+            <a href="/books/search" class="navbar-link">
+                <div class="left-column-nav-div">search books</div>
+            </a>
+            <a href="/books/create" class="navbar-link">
+                <div class="left-column-nav-div">add book</div>
+            </a>
+           
+            <%if(synopses.book_author){%>
+                <!-- If a synopses page, then have a link to write associated with book -->
+                <a href="/synopsis/<%=synopses.book_author%>&<%=synopses.book_title%>/write" class="navbar-link">
                     <div class="left-column-nav-div">write synopsis</div>
                 </a>
-                
-            <%}else{}%>
-            <%if(synopses){%>
-                <!-- If a synopses page, then have a link to write -->
-                <% synopsisLinks.forEach(link=>{ %>
-                    <a href="/synopsis/<%=synopses.book_author%>&<%=synopses.book_title%>/<%=link.split(' ')[0]%>" class="navbar-link">
-                        <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
-                    </a>
-                <%});%>
-            <%}else{%>
+            <%}else if(book){%>
                 <!-- If a books page, then have a link to write -->
-                <% synopsisLinks.forEach(link=>{ %>
-                    <a href="/synopsis/<%=link.split(' ')[0]%>" class="navbar-link">
-                        <div class="left-column-nav-div"><%=link.toUpperCase()%></div>
+                <%if(book.author){ %>
+                    <!-- If within a book page, these links appear -->
+                    <a href="/synopsis/<%=book.author%>&<%=book.title%>/write" class="navbar-link">
+                        <div class="left-column-nav-div">write synopsis</div>
                     </a>
-                <%});%>
+                    <a href="/synopsis/<%=book.author%>&<%=book.title%>" class="navbar-link">
+                        <div class="left-column-nav-div">view <%=book.title%>'s synopsis</div>
+                    </a>
+                <%}else{%>
+                    <!-- If on main page, redirect user to search for book -->
+                    <a href="/books/search" class="navbar-link">
+                        <div class="left-column-nav-div">write synopsis</div>
+                    </a>
+                <%}%>
+
+                
             <%}%>
             <% if(!currentUser){ %>
                 <div class="navbar-mini-header">user links</div>
@@ -38,21 +41,26 @@
             <% }else{ %>
                 <div class="navbar-mini-header">Signed In As <%= currentUser.username %></div>
                 <a href="/logout"> <div>logout</div></a>
-                <%if(currentUser){%>
-                <!-- If the current user wrote the synopses they can edit it -->
                 
-                    <div class="navbar-mini-header">edit synopses</div>
-                    <a href="/books/<%=synopses._id%>/edit">
-                        <div>edit</div>
-                    </a>
-                    <a href="">
-                        <div>
-                            <form action="/books/<%=synopses._id%>?_method=DELETE" method="POST">
-                                <input style="all:unset" type="submit" value="DELETE">
-                        </div>
-                        </form>
-                    </a>
-                <%}%>       
+                    <%if(synopses._id){%>
+                        <!-- If the current user wrote the synopses they can edit it -->
+                        <div class="navbar-mini-header">edit synopses</div>
+                        <a href="/synopsis/<%=synopses._id%>/edit">
+                            <div>edit</div>
+                        </a>
+                        <a href="">
+                            <div>
+                                <form action="/synopsis/<%=synopses._id%>?_method=DELETE" method="POST">
+                                    <input style="all:unset" type="submit" value="DELETE">
+                        
+                                </form>
+                            </div>
+                        </a>
+                    <%}%>
+
+                    
+
+                       
             <% } %> <!-- Current user buttons -->
     </nav>
 </div>

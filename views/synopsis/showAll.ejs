@@ -14,34 +14,32 @@
         <div id="synopsis-previews-container">
 
             <%synopses.forEach(syn=>{%>
-            <%if(syn.id === id){%>
-            <!-- Print the current synopsis the user clicked on -->
-            <div id="current-synopsis-container">
-                <div id="synopsis-title">
-                    Synopsis By: <%=syn.author%>
-                </div>
-                <div id="synopsis-body">
-                    <%=syn.body%>
-                </div>
-            </div>
-            <%}else{%>
+
             <!-- Print other synopsis which have been written -->
             <div id="synopsis-preview">
                 <div id="synopsis-preview-user-icon">
                     <div>
-                        <%=syn.author%>
+                        <%=syn.author.username%>
                     </div>
                 </div>
                 <div id="synopsis-preview-text">
                     <!-- If there is a synopsis printout, then print a substring -->
                     <%if(syn.body){%>
-                    <div><%=syn.body.substring(0,300)%></div>
+                        <div><%=syn.body.substring(0,300)%>...</div>
+                            <a href="/synopsis/<%=syn._id%>">
+                                <div>view</div>
+                            </a>
                     <%}%>
-                                    <a href="/synopsis/<%=syn._id%>/edit"><div>Edit</div></a>
+                    <%if(syn.author.id == currentUser.id){%>
+                        <!-- If author owns this one, then let them edit -->
+                        <a href="/synopsis/<%=syn._id%>/edit">
+                            <div>Edit</div>
+                        </a>
+                    <%}%>
                 </div>
             </div>
-            <%}%>
-                    <%});%>
+            
+            <%});%>
         </div>
     </div>
 </div> <!-- Grid container for left links and synopsis printouts -->

@@ -38,3 +38,15 @@
 .synopsis-book-image{
     width: 40px;
 }
+@media(max-width: 635px){
+    .left-column{
+        display: none;
+    }
+    .books-grid-container{
+        grid-template-columns: 0 100%;
+    }
+    #synopsis-page-container{
+        position: absolute;
+        width: 100%;
+    }
+}

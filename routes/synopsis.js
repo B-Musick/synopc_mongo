@@ -85,7 +85,6 @@ router.get('/:id/edit', middleware.checkSynopsisOwnership, (req, res) => {
 // UPDATE ROUTE
 router.put('/:id', (req, res) => {
     Synopsis.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
-        console.log(updatedBook);
         err ? res.redirect('synopsis') : res.redirect('/synopsis/' + req.params.id);
     });
 });

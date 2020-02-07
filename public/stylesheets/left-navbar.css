@@ -35,3 +35,12 @@
 .top{
     margin-top: 0;
 }
+
+@media(max-width: 635px){
+    .left-column{
+        display: none;
+    }
+    .books-grid-container{
+        grid-template-columns: 0 100%;
+    }
+}

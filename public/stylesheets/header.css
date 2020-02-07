@@ -49,7 +49,7 @@ body{
     height: 40px;
     display: flex;
     justify-content: space-evenly;
-    background-color: rgb(48, 95, 152);
+    background-color:  rgb(43, 19, 43);
     color: white;
     align-content: center;
 }
@@ -60,7 +60,7 @@ body{
     height: 40px;
     display: flex;
     justify-content: space-evenly;
-    background-color: rgb(48, 95, 152);
+    background-color:  rgb(43, 19, 43);
     color: white;
     align-content: center;
 }
@@ -84,7 +84,7 @@ body{
 }
 
 a:hover{
-    background-color:  rgb(100, 63, 118);
+    background-color:  rgb(43, 19, 43);
     color: white;
 }
 
@@ -96,7 +96,7 @@ a:hover{
 /**************************** IPAD/ MOBILE ************************************
  * Logic from scripts/header.js
 */
-@media(max-width: 635px){
+@media only screen and (max-width: 635px){
     #header-word-title{
         /* Need font to shrink as view width shrinks */
         font-size: 9vw;
@@ -105,6 +105,7 @@ a:hover{
     #navigation-bar{
         /* Dont want the icon to be in the center of the nav bar */
         display: block;
+        background-color:  rgb(43, 19, 43);
     }
     /************ FOLDING MENU *************/
     #fold-down-menu-icon-nav{
@@ -115,7 +116,7 @@ a:hover{
     }
      #fold-down-menu-icon-nav:hover{
          filter: brightness(125%);
-         background-color: rgb(102, 151, 211);
+         background-color:  rgb(95, 42, 95);
      }
      #nav-bar-items a{
          /* Navbar items which will fold out when button clicked */
@@ -126,11 +127,25 @@ a:hover{
      .nav-link{
          width: 100%;
      }
+     #nav-bar-items a:hover{
+        filter: brightness(125%);
+        background-color: rgb(95, 42, 95);
+     }
     #nav-bar-items{
         /* Toggle display on to block to show the menu (hearder.js)*/
         display: none;
         float: left;
         width: 120px;
         position: fixed;
+        z-index: 1;
+    }
+}
+@media (min-width: 635px){
+    #nav-bar-items{
+        /* This will make sure that if someone erects the foldable icon and 
+        there screen size grows larger, then items will display as flex and not 
+        inline table */
+
+        display: flex !important;
     }
 }
