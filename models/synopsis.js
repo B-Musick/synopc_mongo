@@ -12,7 +12,9 @@ let synopsisSchema = new mongoose.Schema({
         username: String
     }, 
     body: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    rating: {type:Number, default:0 },
+    likes: {type:Array, default:[]}
 });
 
 module.exports = mongoose.model('Synopsis', synopsisSchema);

@@ -77,17 +77,48 @@ router.get('/:id', (req, res) => {
 
 // EDIT ROUTE
 router.get('/:id/edit', middleware.checkSynopsisOwnership, (req, res) => {
+    
     Synopsis.findById(req.params.id,  (err, foundSynopses) => {
         err ? res.redirect('/synopsis') : res.render('synopsis/edit', { synopses: foundSynopses });
     });
 });
 
 // UPDATE ROUTE
-router.put('/:id', (req, res) => {
-    Synopsis.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
-        err ? res.redirect('synopsis') : res.redirect('/synopsis/' + req.params.id);
-    });
+router.put('/:id', middleware.isLoggedIn,  (req, res) => {
+    if(req.body.rating){
+        // Rating system
+        Synopsis.findById(req.params.id, (err, updatedSyn) => {
+            if (err) {
+                console.log(err);
+                res.redirect('/synopsis')
+            } else {
+                if(updatedSyn.likes.includes(req.user.id)){
+                    // Id user is unliking this
+                    updatedSyn.rating -= 1;
+                    let index = updatedSyn.likes.indexOf(req.user.id);
+                    updatedSyn.likes.splice(index,1); // Make sure they dont vote twice 
+                    updatedSyn.save();
+                    res.redirect('/synopsis/' + req.params.id);
+                } else{
+                    // When user is liking this
+                    updatedSyn.rating += 1;
+                    updatedSyn.likes.push(req.user.id); // Make sure they dont vote twice 
+                    updatedSyn.save();
+                    res.redirect('/synopsis/' + req.params.id);
+                }
+            }   
+        })
+
+    } else{
+        Synopsis.findByIdAndUpdate(req.params.id, req.body, (err, updatedBook) => {
+            err ? res.redirect('synopsis') : res.redirect('/synopsis/' + req.params.id);
+        });
+    }
+
+    
+
 });
+
 
 // DELETE ROUTE
 router.delete('/:id', middleware.checkSynopsisOwnership, (req, res) => {

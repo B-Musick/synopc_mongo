@@ -19,6 +19,19 @@
                         <div id="synopsis-body">
                             <%=synopses.body%>
                         </div>
+                        <div>Your current rating is <%=synopses.rating%></div>
+                        <form id='rating-form' action="/synopsis/<%=synopses._id%>?_method=PUT" method="POST">
+                            <!-- Rating where if user likes or doesnt like -->
+                            <%if(currentUser){%>
+                                <%if(synopses.likes.includes(currentUser.id)){%>
+                                    <input name="rating" type="submit" value="You like this!">
+                                <%}else{%>
+                                    <input name="rating" type="submit" value="like">
+                                <%}%>
+                            <%}%>
+
+                            
+                        </form>
                     </div>
                 </div>
             </div>
