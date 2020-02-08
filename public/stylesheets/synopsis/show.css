@@ -9,11 +9,17 @@
     display: grid;
     grid-template-columns: 30% 70%;
 }
-#synopsis-previews-container{
+.synopsis-previews-container{
     /* Full container containing all the synopsis for the books */
     height: 100%;
     width: 80%;
-    margin: 0 auto;
+    margin: 30px auto;
+    background-color: aliceblue;
+    padding: 20px 20px;
+    border: 1px solid rgb(186, 200, 212);
+    display: grid;
+    
+
 }
 
 #synopsis-preview-left-column{
@@ -22,19 +28,16 @@
     width: 100%;
 }
 
-#synopsis-preview{
+.synopsis-preview{
     grid: 2/3;
-    height: 100px;
+    max-height: 100px;
     display: grid;
-    grid-template-columns: 110px 75%;
-
-    margin-bottom: 10px;
-    margin-top: 10px;;
-    
-    
-
+    grid-template-columns: 110px auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
-#synopsis-preview-user-icon{
+
+.synopsis-preview-user-icon{
     font-size: 12px;
     grid: 1/2;
     padding: 10px;
@@ -42,8 +45,11 @@
     border: 1px solid rgb(60, 143, 121);
 
 }
+#substring-body{
+    /* font-size: 1.6vw; */
+}
 
-#synopsis-preview-text{
+.synopsis-preview-text{
     grid: 2/3;
     padding: 10px;
     background-color: rgb(161, 232, 213);
@@ -52,15 +58,22 @@
 
 @media(max-width: 635px){
 
-    #synopsis-previews-container{
+    .synopsis-previews-container{
         position: absolute;
-        width: 100%;
+        margin-left: 20px !important;
+        height: auto;
+        padding: 20px;
+        
+
+    }
+    .syn-container{
+        display: block !important;
     }
 }
 
 
 #current-synopsis-container{
-    padding-top: 20px;
+    padding: 20px;
 }
 
 #synopsis-title{
@@ -93,4 +106,38 @@
 }
 .edit-delete-buttons input{
     padding: 5px 10px;
+}
+
+#rating-form-container {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    padding: 20px;
+    /* margin-left: -20px; */
+    background-color: rgb(186, 196, 204);
+        margin-left: -19px;
+}
+
+.like-button{
+    all: unset;
+    background-color: rgb(98, 194, 98);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(47, 92, 47);
+}
+.unlike-button{
+    all: unset;
+    background-color: rgb(189, 185, 184);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(87, 84, 83);
+}
+
+.uppercase-span{
+    text-transform: uppercase;
+}
+#rating-value{
+    color: rgb(92, 86, 86);
 }

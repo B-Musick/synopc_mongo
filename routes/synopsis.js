@@ -64,7 +64,7 @@ router.get('/:author&:title', (req, res) => {
         err ? console.log(err) : res.render('synopsis/showAll', { synopses: foundSynopses, id:req.params.id, bookLinks, synopsisLinks,book:'' });
     });
 });
-// SHOW ROUTE FIND ALL BY 
+// SHOW ROUTE 
 router.get('/:id', (req, res) => {
     // Links for left-navbar.js
     let bookLinks = ['search books', 'create book'];

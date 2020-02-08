@@ -9,8 +9,9 @@
 #books-title-container{
     padding: 60px 0;
     width: 100%;
-    background-color: rgb(166, 170, 190);
-    border-bottom: 1px solid rgb(129, 132, 146);
+    color:white;
+    background-color: rgb(186, 196, 204);
+    border-bottom: 1px solid rgb(153, 156, 170);
     display: flex;
     justify-content: center;
 }

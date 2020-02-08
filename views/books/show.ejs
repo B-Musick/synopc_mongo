@@ -1,4 +1,4 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header.ejs',{synopses:false}) %>
     <div id="books-body">
         <%- include('../partials/book-show-title.ejs',
             {image:book.image, title:book.title, author:book.author}) %>

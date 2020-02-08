@@ -1,4 +1,4 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header.ejs',{synopses:false}) %>
 <div id="synopsis-body">
     <!-- Header with book title, image and author -->
         <%- include('../partials/book-show-title.ejs',
@@ -11,26 +11,26 @@
         <%- include('../partials/left-navbar.ejs',{synopses, bookLinks, synopsisLinks}) %>
 
         <!-- RIGHT COLUMN - shows individual synopsis about book (snippets) -->
-        <div id="synopsis-previews-container">
+        <div class="synopsis-previews-container">
 
             <%synopses.forEach(syn=>{%>
 
             <!-- Print other synopsis which have been written -->
-            <div id="synopsis-preview">
-                <div id="synopsis-preview-user-icon">
+            <div class="synopsis-preview">
+                <div class="synopsis-preview-user-icon">
                     <div>
                         <%=syn.author.username%>
                     </div>
                 </div>
-                <div id="synopsis-preview-text">
+                <div class="synopsis-preview-text">
                     <!-- If there is a synopsis printout, then print a substring -->
                     <%if(syn.body){%>
-                        <div><%=syn.body.substring(0,300)%>...</div>
+                        <div id="substring-body"><%=syn.body%>...</div>
                             <a href="/synopsis/<%=syn._id%>">
                                 <div>view</div>
                             </a>
                     <%}%>
-                    <%if(syn.author.id == currentUser.id){%>
+                    <%if(currentUser && syn.author.id == currentUser.id){%>
                         <!-- If author owns this one, then let them edit -->
                         <a href="/synopsis/<%=syn._id%>/edit">
                             <div>Edit</div>

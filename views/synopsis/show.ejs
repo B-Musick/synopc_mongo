@@ -1,11 +1,11 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header.ejs',{synopses}) %>
     <div id="synopsis-body">
         <!-- Header with book title, image and author -->
         <%- include('../partials/book-show-title.ejs',
             {image:synopses.book_image, title:synopses.book_title,author:synopses.book_author}) %>
 
         <!-- Links to the form where author and title are automatic values -->     
-            <div class="books-grid-container">
+            <div class="books-grid-container syn-container">
                 <!-- LEFT navbar column -->
                 <%- include('../partials/left-navbar.ejs',{synopses}) %>
 
@@ -14,24 +14,27 @@
                     <!-- Print the current synopsis the user clicked on -->
                     <div id="current-synopsis-container"> 
                         <div id="synopsis-title">
-                            synopsis by: <%=synopses.author.username%>
+                            <span class="uppercase-span">synopsis by:</span> <%=synopses.author.username%>
                         </div>
                         <div id="synopsis-body">
-                            <%=synopses.body%>
+                            <%-synopses.body%>
                         </div>
-                        <div>Your current rating is <%=synopses.rating%></div>
-                        <form id='rating-form' action="/synopsis/<%=synopses._id%>?_method=PUT" method="POST">
-                            <!-- Rating where if user likes or doesnt like -->
-                            <%if(currentUser){%>
-                                <%if(synopses.likes.includes(currentUser.id)){%>
-                                    <input name="rating" type="submit" value="You like this!">
-                                <%}else{%>
-                                    <input name="rating" type="submit" value="like">
-                                <%}%>
-                            <%}%>
-
+                        <div id="rating-form-container">
                             
-                        </form>
+                            <form id='rating-form' action="/synopsis/<%=synopses._id%>?_method=PUT" method="POST">
+                                <!-- Rating where if user likes or doesnt like -->
+                                <%if(currentUser){%>
+                                    <%if(synopses.likes.includes(currentUser.id)){%>
+                                        <input class="like-button" name="rating" type="submit" value="You like this!">
+                                    <%}else{%>
+                                        <input class="unlike-button" name="rating" type="submit" value="Click To Like">
+                                    <%}%>
+                                <%}%>
+                            
+                            </form>
+                            <div id="rating-value"><span class="uppercase-span">rating:</span> <%=synopses.rating%></div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,10 +1,14 @@
 .left-column{
     /* padding-left: 40px; */
     
-    font-size: 1.5vw;
-    background-color: rgb(43, 19, 43);
+    font-size: 1.1vw;
+    background-color: rgb(96, 43, 96);
     text-transform: uppercase;
     width: 100%;
+    border-right: 1px solid rgb(73, 32, 73);
+    height: 100%;
+    grid-row: 1/3;;
+
 }
 
 .left-column-nav a{
@@ -16,21 +20,24 @@
 }
 .left-column-nav a div{
     padding: 5px 0;
-    border-bottom: 1px dashed white;
+    border-bottom: 1px solid white;
     margin-right: 0;
      width: calc(100% - 40px);
 } 
 .navbar-mini-header{
     color: rgb(121, 63, 121);
-    background-color: rgb(121, 63, 121);
+    /* background-color: rgb(121, 63, 121); */
     position: relative;
     left:0 !important;
     text-align: center;
-    color: rgb(43, 19, 43);
+    /* color: rgb(43, 19, 43); */
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 5px;
-    border: 3px solid rgb(43, 19, 43);
+    /* border: 3px solid rgb(43, 19, 43); */
+    border-bottom: 1px solid rgb(170, 176, 182);
+    color:rgb(170, 176, 182);
+
 }
 .top{
     margin-top: 0;

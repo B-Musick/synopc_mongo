@@ -15,7 +15,7 @@
 .synopsis-instance{
     padding: 20px;
     margin: 20px 0;
-    width: 300px;
+    max-width: 300px;
     display: grid;
     grid-template-columns: 30% 70%;
 }
@@ -43,7 +43,8 @@
         display: none;
     }
     .books-grid-container{
-        grid-template-columns: 0 100%;
+       
+       padding: 20px;
     }
     #synopsis-page-container{
         position: absolute;

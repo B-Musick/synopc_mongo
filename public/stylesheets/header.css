@@ -84,7 +84,7 @@ body{
 }
 
 a:hover{
-    background-color:  rgb(43, 19, 43);
+    background-color:  rgb(96, 43, 96);
     color: white;
 }
 
@@ -92,7 +92,19 @@ a:hover{
     /* Fold sandwich menu */
     display:none;
 }
+.phone-screen-login-items-hidden{
+    display:none !important;
+}
+.edit-navbar{
+    display: none;
+    width: 0;
 
+}
+.delete-navbar{
+    display: none;
+    width: 0 !important;
+        
+}
 /**************************** IPAD/ MOBILE ************************************
  * Logic from scripts/header.js
 */
@@ -104,7 +116,7 @@ a:hover{
 
     #navigation-bar{
         /* Dont want the icon to be in the center of the nav bar */
-        display: block;
+        justify-content: flex-start !important;
         background-color:  rgb(43, 19, 43);
     }
     /************ FOLDING MENU *************/
@@ -121,8 +133,12 @@ a:hover{
      #nav-bar-items a{
          /* Navbar items which will fold out when button clicked */
         padding: 10px;
-        width: 110px;
+        width: fit-content;
         margin-left: 0 !important;
+     }
+     #nav-bar-items{
+        text-align: left !important;
+
      }
      .nav-link{
          width: 100%;
@@ -130,22 +146,84 @@ a:hover{
      #nav-bar-items a:hover{
         filter: brightness(125%);
         background-color: rgb(95, 42, 95);
+        width: auto;
      }
     #nav-bar-items{
         /* Toggle display on to block to show the menu (hearder.js)*/
         display: none;
         float: left;
-        width: 120px;
-        position: fixed;
+        width: fit-content;
+        position: absolute;
+        margin-top: 38px;
+        
         z-index: 1;
     }
+    .phone-screen-login-items{
+        width: 100%;
+        height: 40px;
+        display: flex !important;
+        justify-content: flex-end;
+        background-color:  rgb(43, 19, 43);
+        color: white;
+        align-content: center;
+        align-self: flex-end;
+    }
+    .phone-screen-login-items a{
+        justify-content: flex-end !important;
+        width: 100%;
+        display: flex;
+        padding-right: 10px;
+        justify-content: center;
+         align-items: center;
+    width: fit-content !important;
+    }
+    
+    #phone-user-signed-in{
+        text-align: end;
+        width: 140px;
+        align-self: center;
+        padding-right: 10px;
+        color: rgb(188, 136, 188);
+    }
+    .edit-navbar{
+        display: block;
+        text-transform: uppercase;
+    }
+    .delete-navbar{
+        display: block;
+        
+    }
+    .top{
+        margin-top: 0;
+        color: cadetblue;
+        border-top: 1px solid cadetblue;
+        border-bottom: 1px solid cadetblue;
+        padding: 5px 0;
+        text-align: center;
+        width: auto;
+    }
+
 }
 @media (min-width: 635px){
     #nav-bar-items{
         /* This will make sure that if someone erects the foldable icon and 
         there screen size grows larger, then items will display as flex and not 
         inline table */
-
         display: flex !important;
+    }
+    .phone-screen-login-items-hidden{
+        display:none !important;
+    }
+    .edit-navbar{
+        display: none;
+    width: 0 !important;
+       
+    }
+    .delete-navbar{
+        display: none;
+    width: 0 !important;
+      
+
+        
     }
 }

@@ -46,5 +46,73 @@
             <a><div class="nav-link">TRADE</div></a>
             <a><div class="nav-link">REVIEW</div></a>
             <a href="/synopsis"><div style="padding-right:0;" class="nav-link">SYNOPSIS</div></a>
+            <div class="edit-navbar top">book links</div>
+            <!-- Links appear no matter which page -->
+            <a href="/books/search" class="edit-navbar">
+                <div class="edit-navbar nav-link">search books</div>
+            </a>
+            <a href="/books/create" class="edit-navbar">
+                <div class="edit-navbar nav-link">add book</div>
+            </a>
+            
+            <%if(synopses.book_author){%>
+            <!-- If a synopses page, then have a link to write associated with book -->
+            <div class="edit-navbar top">synopsis links</div>
+
+            <a href="/synopsis/<%=synopses.book_author%>&<%=synopses.book_title%>/write" class="edit-navbar">
+                <div class="edit-navbar nav-link">write synopsis</div>
+            </a>
+            <%}else if(book){%>
+                <!-- If a books page, then have a link to write -->
+                <%if(book.author){ %>
+                    <div class="edit-navbar top">synopsis links</div>
+
+                    <!-- If within a book page, these links appear -->
+                    <a href="/synopsis/<%=book.author%>&<%=book.title%>/write" class="edit-navbar">
+                        <div class="nav-link edit-navbar">write synopsis</div>
+                    </a>
+                    <a href="/synopsis/<%=book.author%>&<%=book.title%>" class="edit-navbar">
+                        <div class="edit-navbar nav-link">view <%=book.title%>'s synopsis</div>
+                    </a>
+                <%}else{%>
+                <!-- If on main page, redirect user to search for book -->
+                <a href="/books/search" class="edit-navbar">
+                    <div class="edit-navbar nav-link">write synopsis</div>
+                </a>
+                <%}%>
+                    
+                                
+            <%}%>
+            <%if(currentUser && synopses._id){%>
+                <!-- If the current user wrote the synopses they can edit it -->
+                <a class="edit-navbar" href="/synopsis/<%=synopses._id%>/edit">
+                    <div class="nav-link edit-navbar">EDIT SYNOPSIS</div>
+                </a>
+                <a class="delete-navbar" href="">
+                    <div class="nav-link delete-navbar">
+                        <form action="/synopsis/<%=synopses._id%>?_method=DELETE" method="POST">
+                            <input style="all:unset" type="submit" value="DELETE SYNOPSIS">
+                        </form>
+                    </div>
+                </a>
+            <%}%>           
+        </div>
+        <!-- Shows in the nav bar not folded -->
+        <div class="phone-screen-login-items phone-screen-login-items-hidden">
+            <!-- Show to right when everything else in dropdown -->
+            <% if(!currentUser){ %>
+                <a href="/login">
+                    <div>login</div>
+                </a>
+                <a href="/register">
+                    <div>sign up</div>
+                </a>
+            <% }else{ %>
+                <div id="phone-user-signed-in">Signed In As <%= currentUser.username %></div>
+                <a href="/logout">
+                    <div>logout</div>
+                </a>         
+            <% } %>
+            <!-- Current user buttons -->
         </div>
     </nav>
