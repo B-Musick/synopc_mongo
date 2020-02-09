@@ -30,11 +30,12 @@
 
 .synopsis-preview{
     grid: 2/3;
-    max-height: 100px;
+    min-height: 100px;
     display: grid;
     grid-template-columns: 110px auto;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: initial;
+    position: relative;
 }
 
 .synopsis-preview-user-icon{
@@ -59,9 +60,8 @@
 @media(max-width: 635px){
 
     .synopsis-previews-container{
-        position: absolute;
+        width: 80vw;
         margin-left: 20px !important;
-        height: auto;
         padding: 20px;
         
 

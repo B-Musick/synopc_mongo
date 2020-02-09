@@ -1,0 +1,51 @@
+<%- include('./partials/partial-header.ejs',{synopses:false}) %>
+    <div id="update-form-container">
+    <!-- If create synopsis from author and book -->
+        <form action="/<%=user.id%>/profile/update?_method=PUT" method="POST">
+            <div class="update-input">
+                <label for="username">Username: </label>
+                <div>
+                    <input type="text" name="username" id="username" value="<%=user.username%>" readonly>
+                    <i class="fa fa-edit" id="username-edit"></i>
+                </div>
+
+            </div>
+            <div class="update-input">
+                <label for="email">E-mail: </label>
+                <div>
+                    <input type="email" name="email" id="email" value="<%=user.email%>" readonly>
+                    <i class="fa fa-edit" id="email-edit"></i>
+                </div>
+            </div>
+            <div class="update-input">
+                <label for="password">Password: </label>
+                <div>
+                    <input type="password" name="password" id="password" value="<%=user.password%>" readonly>
+                    <i class="fa fa-edit" id="password-edit"></i>
+                </div>
+            </div>
+            <div class="update-input">
+                <label for="firstName">First Name: </label>
+                <div>
+                    <input type="text" name="firstName" id="firstName" value="<%=user.firstName%>" readonly>
+                    <i class="fa fa-edit" id="firstName-edit"></i>
+                </div>
+
+            </div>
+            
+            <div class="update-input">
+                <label for="lastName">Last Name: </label>
+                <div>
+                    <input type="text" name="lastName" id="lastName" value="<%=user.lastName%>" readonly>
+                    <i class="fa fa-edit" id="lastName-edit"></i>
+                </div>
+
+            </div>
+            <div id="create-synopsis-button">
+                <button>Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+<%- include('./partials/footer.ejs') %>
+

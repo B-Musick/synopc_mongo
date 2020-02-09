@@ -7,3 +7,6 @@
 - Combine styling of register and login routes since similiar
 
 https://github.com/B-Musick/synopc_mongo
+
+# Like button
+https://stackoverflow.com/questions/39637482/like-button-add-and-subtract-on-database-nodejs-mongodb-mongoose-jquery

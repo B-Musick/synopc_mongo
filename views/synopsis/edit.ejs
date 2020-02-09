@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/stylesheets/synopsis/new.css">
-    <link href="https://fonts.googleapis.com/css?family=Cookie|Permanent+Marker&display=swap" rel="stylesheet">
-
-    <title>SynopC</title>
-</head>
-
-<body>
+<%- include('../partials/partial-header.ejs') %>
     <%if(synopses.book_title && synopses.book_author){%>
     <div id="create-book-form-container">
         <!-- If create synopsis from author and book -->

@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs',{synopses:false, book:false}) %>
+
+<div id="search-page-container">
+    <div id="search-form-container">
+        <h2>Search For a Book</h2>
+        <div>
+            <form id="search-form">
+                <input id="search-form-input" type="text" name="query" placeholder="Enter a title or author name...">
+                <button class="no-click" id="search-form-submit-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="search-results-container">
+        <%if(books){%>
+        <%books.map(book=>{%>
+        <a class='search-result-anchor' id="<%=book.title%>-anchor" href="/books/<%=book.title%>&<%=book.author%>">
+            <div id="<%=book.title%>-<%=book.author%>-container" class='search-result-instance search-instance-hidden'>
+                <div class="search-book-image-column">
+                    <img src="<%=book.image%>" class="search-book-image">
+                </div>
+                <div id="search-book-text-column">
+                    <div class="search-book-title"><%=book.title%></div>
+                    <div class="search-book-author"><%=book.author%></div>
+                </div>
+            </div>
+        </a>
+        <%})%>
+        <%}%>
+        </div>
+    </div>
+<%- include('../partials/footer.ejs') %>

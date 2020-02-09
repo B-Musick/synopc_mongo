@@ -41,6 +41,8 @@
         <% }else{ %>
             <div class="navbar-mini-header">Signed In As <%= currentUser.username %></div>
             <a href="/logout"> <div>logout</div></a>
+            <a href="/<%=currentUser.id%>/profile"><div>view profile</div></a>
+
             
                 <%if(synopses._id){%>
                     <!-- If the current user wrote the synopses they can edit it -->
@@ -51,8 +53,7 @@
                     <a href="">
                         <div>
                             <form action="/synopsis/<%=synopses._id%>?_method=DELETE" method="POST">
-                                <input style="all:unset" type="submit" value="DELETE">
-                    
+                                <input style="all:unset" type="submit" value="DELETE">                  
                             </form>
                         </div>
                     </a>

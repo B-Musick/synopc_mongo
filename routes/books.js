@@ -19,6 +19,13 @@ router.get('/',(req,res)=>{
     });
 });
 
+/****************** SEARCH ROUTE ***********/
+router.get('/search', (req, res) => {
+    Book.find({}, (err, foundBooks) => {
+        err ? console.log(err) : res.render('books/search', { books: foundBooks });
+    });
+});
+
 /************ ADD BOOK TO DATABASE ***********/
 
 // NEW ROUTE (plants/create)
@@ -61,4 +68,11 @@ router.delete('/:id',  (req, res) => {
     });
 });
 
+
+// router.post('/', (req, res) => {
+//     let query = req.body.query;
+//     Book.find({title:query}, (err, foundQuery)=>{
+
+//     });
+// });
 module.exports = router;
