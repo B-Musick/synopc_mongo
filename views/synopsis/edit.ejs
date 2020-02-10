@@ -1,5 +1,4 @@
 <%- include('../partials/partial-header.ejs') %>
-    <%if(synopses.book_title && synopses.book_author){%>
     <div id="create-book-form-container">
         <!-- If create synopsis from author and book -->
         <div id="create-book-title">SYNOPSIS</div>
@@ -17,21 +16,5 @@
             </div>
         </form>
     </div>
-
-    <%}else{%>
-    <div id="create-book-form-container">
-        <form action="/synopsis" method="POST">
-            <input type="text" class="create-synopsis-input" name="book_title" id="book_title" placeholder="Book Title">
-            <input type="text" class="create-synopsis-input" name="book_author" id="book_author"
-                placeholder="Book Author">
-            <input type="text" class="create-synopsis-input" name="synopsis_author" id="author"
-                placeholder="Synopsis Author">
-            <textarea name="synopsis_text" id="body" placeholder="Synopsis"></textarea>
-            <div id="create-book-button">
-                <button>Submit</button>
-            </div>
-        </form>
-    </div>
-    <%}%>
 </body>
 </html>
